@@ -32,7 +32,8 @@ export default function AddMovie() {
     });
     const navigate =useNavigate();
     const addMovie = (newMovie) => {
-        fetch('https://65f16b8f034bdbecc7627180.mockapi.io/movie',{
+        // fetch('https://65f16b8f034bdbecc7627180.mockapi.io/movie',{
+           fetch ("https://fr-demo-backend.vercel.app/post",{ 
         method: 'POST',
         body: JSON.stringify(newMovie),
         headers : { "Content-type" : "application/json"},

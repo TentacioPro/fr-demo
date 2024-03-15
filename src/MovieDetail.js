@@ -10,7 +10,7 @@ export default function MovieDetail() {
 const [movie, setMovie] = useState([]);
         
     useEffect(() => {
-        fetch(`https://65f16b8f034bdbecc7627180.mockapi.io/movie/${id}`, {method: "GET"})
+        fetch(`https://fr-demo-backend.vercel.app/getone/${id}`, {method: "GET"})
         .then((data) => data.json())
         .then((mv) => setMovie(mv));
     },[]);

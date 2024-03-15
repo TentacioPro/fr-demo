@@ -95,13 +95,14 @@ export default function Movielist() {
 //     ]
 const [movie, setMovie] = useState([]);
 const getMovies = () =>{ 
-    fetch("https://65f16b8f034bdbecc7627180.mockapi.io/movie",{
+    fetch("https://fr-demo-backend.vercel.app/get",{
          method:"GET"
         })
      .then((data)=> data.json())
      .then((mvs) => setMovie(mvs))
     
 }
+console.log(movie);
     
     useEffect(()=>{
         getMovies()
