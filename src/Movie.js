@@ -14,6 +14,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { API } from './global';
 
 export default function Movie({movieTake,getMovies}) {
   const navigate = useNavigate();
@@ -21,7 +22,8 @@ export default function Movie({movieTake,getMovies}) {
 
   const deleteMovie = (id) => {
     // console.log(id);
-    fetch(`https://fr-demo-backend.vercel.app/delete/${id}`, {
+    fetch(`${API}/delete/${id}`, {
+    // fetch(`https://fr-demo-backend.vercel.app/delete/${id}`, {
       method:"DELETE",
     })
     .then(()=> getMovies())

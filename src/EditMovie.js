@@ -5,6 +5,7 @@ import * as yup from "yup";
 import {useFormik} from "formik";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { API } from './global';
 
 export default function EditMovie() {
     const {id} = useParams();
@@ -13,7 +14,8 @@ export default function EditMovie() {
     const [show, setShow] = useState(false);
 
     useEffect ( () => {
-        fetch(`https://fr-demo-backend.vercel.app/getone/${id}`, {method:"GET"})
+        fetch(`${API}/getone/${id}`, {method:"GET"})
+        // fetch(`https://fr-demo-backend.vercel.app/getone/${id}`, {method:"GET"})
         .then((data) => data.json())
         .then((mv) => setMovie(mv))
         .then(() =>setShow(true))
@@ -56,7 +58,8 @@ export default function EditMovie() {
     });
 
     const editMovie = (newMovie) => {
-        fetch(`https://fr-demo-backend.vercel.app/update/${movie._id}`,{
+        fetch(`${API}/update/${movie._id}`,{
+        // fetch(`https://fr-demo-backend.vercel.app/update/${movie._id}`,{
         method: 'PUT',
         body: JSON.stringify(newMovie),
         headers : { "Content-type" : "application/json"},

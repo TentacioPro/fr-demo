@@ -2,6 +2,7 @@ import { Button } from '@mui/material';
 import React, { useEffect,useState } from 'react'
 import {  useNavigate, useParams } from 'react-router-dom'
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { API } from './global';
 
 export default function MovieDetail() {
   const {id} = useParams();
@@ -10,7 +11,8 @@ export default function MovieDetail() {
 const [movie, setMovie] = useState([]);
         
     useEffect(() => {
-        fetch(`https://fr-demo-backend.vercel.app/getone/${id}`, {method: "GET"})
+        fetch(`${API}/getone/${id}`,{method:"GET"})
+        // fetch(`https://fr-demo-backend.vercel.app/getone/${id}`, {method: "GET"})
         .then((data) => data.json())
         .then((mv) => setMovie(mv));
     },[]);

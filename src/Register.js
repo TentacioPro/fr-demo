@@ -3,9 +3,11 @@ import { TextField } from '@mui/material';
 import { useFormik } from 'formik';
 import * as yup from "yup";
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { API } from './global';
 
 export default function Register() {
+  const navigate = useNavigate();
     const registrationValidationSchema =yup.object({
         username : yup.string().required(),
         email : yup.string().required().email(),
@@ -21,10 +23,24 @@ export default function Register() {
         
         validationSchema : registrationValidationSchema,
         onSubmit : (values) =>{
-            console.log(values);
+            // console.log(values);
+            register(values);
         }
 
     });
+
+    const register =(values) => {
+      fetch(`${API}/register`,{
+        method:'POST',
+        body : JSON.stringify(values),
+        headers : {"Content-Type" : "application/json"},
+      })
+      .then(() => alert("successfully registered"))
+      .then(() =>navigate("/"));
+    }
+
+   
+
   return (
     <form className ="registrationForm" onSubmit={formik.handleSubmit}>
         <h1>Register Here</h1>
